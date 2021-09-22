@@ -1,0 +1,16 @@
+.venv
+
+
+# don't track generated static html files
+.build
+
+
+__pycache__
+
+
+# don't track sqlite db
+.db
+*.sqlite3
+
+# don't track media
+media
