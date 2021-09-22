@@ -4,9 +4,7 @@ from wagtail.contrib.modeladmin.options import (
     modeladmin_register,
 )
 
-from .models import (
-    Person,
-)
+from .models import Person
 
 
 class PersonModelAdmin(ModelAdmin):

@@ -58,9 +58,7 @@ class BlogArticlePageTag(TaggedItemBase):
     """A blog article tag"""
 
     content_object = ParentalKey(
-        "BlogArticlePage",
-        related_name="tagged_items",
-        on_delete=models.CASCADE,
+        "BlogArticlePage", related_name="tagged_items", on_delete=models.CASCADE,
     )
 
 
@@ -75,14 +73,10 @@ class BlogArticlePage(Page):
         default=timezone.now(),
     )
     tags = ClusterTaggableManager(
-        through=BlogArticlePageTag,
-        blank=True,
-        verbose_name=_("Tags"),
+        through=BlogArticlePageTag, blank=True, verbose_name=_("Tags"),
     )
     intro = models.CharField(
-        verbose_name=_("Introduction"),
-        blank=True,
-        max_length=250,
+        verbose_name=_("Introduction"), blank=True, max_length=250,
     )
     header_image = models.ForeignKey(
         "wagtailimages.Image",
@@ -113,6 +107,7 @@ class BlogArticlePage(Page):
         MultiFieldPanel(
             [
                 # InlinePanel("authors", label=_("Authors")),
+                FieldPanel("title"),
                 FieldPanel("date"),
                 FieldPanel("tags"),
                 FieldPanel("intro"),
@@ -148,9 +143,7 @@ class BlogArticleAuthor(Orderable):
     """A Blog article author, linked to a person"""
 
     page = ParentalKey(
-        BlogArticlePage,
-        on_delete=models.CASCADE,
-        related_name="authors",
+        BlogArticlePage, on_delete=models.CASCADE, related_name="authors",
     )
     author = models.ForeignKey(
         "wagtailperson.Person",
@@ -179,10 +172,7 @@ class BlogIndexPage(RoutablePageMixin, Page):
         "BlogArticlePage",
     ]
 
-    intro = RichTextField(
-        verbose_name=_("Introduction"),
-        blank=True,
-    )
+    intro = RichTextField(verbose_name=_("Introduction"), blank=True,)
 
     content_panels = Page.content_panels + [
         FieldPanel("intro", classname="full"),
@@ -235,16 +225,10 @@ class BlogIndexPage(RoutablePageMixin, Page):
         to it.
         """
         context = super(BlogIndexPage, self).get_context(request)
-        articles_per_pages = getattr(
-            settings,
-            "BLOG_ARTICLES_PER_PAGES",
-            10,
-        )
+        articles_per_pages = getattr(settings, "BLOG_ARTICLES_PER_PAGES", 10,)
         page = request.GET.get("page")
         articles = items_at_page(
-            self.all_articles_tagged_as(tag),
-            articles_per_pages,
-            page,
+            self.all_articles_tagged_as(tag), articles_per_pages, page,
         )
         context["articles"] = articles
         context["tag"] = tag

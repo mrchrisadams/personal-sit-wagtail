@@ -125,13 +125,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
         ),
-        migrations.DeleteModel(
-            name="PersonTitle",
-        ),
+        migrations.DeleteModel(name="PersonTitle",),
         migrations.AlterModelOptions(
             name="personindexpage",
             options={
@@ -147,33 +143,13 @@ class Migration(migrations.Migration):
                 "verbose_name_plural": "Person or author pagess",
             },
         ),
-        migrations.RemoveField(
-            model_name="personpage",
-            name="abstract",
-        ),
-        migrations.RemoveField(
-            model_name="personpage",
-            name="custom_titles",
-        ),
-        migrations.RemoveField(
-            model_name="personpage",
-            name="extra_infos",
-        ),
-        migrations.RemoveField(
-            model_name="personpage",
-            name="intro",
-        ),
-        migrations.RemoveField(
-            model_name="personpage",
-            name="name",
-        ),
-        migrations.RemoveField(
-            model_name="personpage",
-            name="picture",
-        ),
-        migrations.DeleteModel(
-            name="PersonTitlePage",
-        ),
+        migrations.RemoveField(model_name="personpage", name="abstract",),
+        migrations.RemoveField(model_name="personpage", name="custom_titles",),
+        migrations.RemoveField(model_name="personpage", name="extra_infos",),
+        migrations.RemoveField(model_name="personpage", name="intro",),
+        migrations.RemoveField(model_name="personpage", name="name",),
+        migrations.RemoveField(model_name="personpage", name="picture",),
+        migrations.DeleteModel(name="PersonTitlePage",),
         migrations.AddField(
             model_name="person",
             name="tags",

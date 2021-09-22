@@ -15,11 +15,7 @@ class BlogIndexPageTests(TestCase):
         self.home = Page.objects.get(slug="home")
         self.user = User.objects.create_user("test", "test@test.test", "pass")
         self.blog_index = self.home.add_child(
-            instance=BlogIndexPage(
-                title="Blog Index",
-                slug="blog",
-                owner=self.user,
-            ),
+            instance=BlogIndexPage(title="Blog Index", slug="blog", owner=self.user,),
         )
         self.tags = [
             "test1",

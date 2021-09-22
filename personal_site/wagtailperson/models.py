@@ -30,10 +30,7 @@ class PersonTag(TaggedItemBase):
     """A tag, related to a person"""
 
     content_object = ParentalKey(
-        "Person",
-        related_name="tagged_items",
-        on_delete=models.CASCADE,
-        null=True,
+        "Person", related_name="tagged_items", on_delete=models.CASCADE, null=True,
     )
 
 
@@ -46,14 +43,8 @@ class PersonExtrernalLink(Orderable, models.Model):
         verbose_name=_("Person"),
         related_name="external_links",
     )
-    label = models.CharField(
-        verbose_name=_("Label"),
-        max_length=255,
-    )
-    url = models.URLField(
-        verbose_name=_("URL"),
-        max_length=255,
-    )
+    label = models.CharField(verbose_name=_("Label"), max_length=255,)
+    url = models.URLField(verbose_name=_("URL"), max_length=255,)
 
     panels = [
         FieldPanel("label"),
@@ -79,15 +70,8 @@ class Person(ClusterableModel):
         related_name="+",
         verbose_name=_("Picture"),
     )
-    name = models.CharField(
-        verbose_name=_("Name"),
-        max_length=250,
-    )
-    name_slug = models.CharField(
-        max_length=250,
-        editable=False,
-        blank=True,
-    )
+    name = models.CharField(verbose_name=_("Name"), max_length=250,)
+    name_slug = models.CharField(max_length=250, editable=False, blank=True,)
     tags = TaggableManager(through=PersonTag, blank=True)
     intro = models.CharField(
         verbose_name=_("Introduction"),
@@ -95,10 +79,7 @@ class Person(ClusterableModel):
         blank=True,
         help_text=_("Shown on the short descriptions"),
     )
-    abstract = RichTextField(
-        blank=True,
-        verbose_name=_("Abstract"),
-    )
+    abstract = RichTextField(blank=True, verbose_name=_("Abstract"),)
 
     panels = [
         ImageChooserPanel("picture"),
@@ -129,10 +110,7 @@ class PersonPage(Page):
     """A person"""
 
     person = models.ForeignKey(
-        Person,
-        on_delete=models.PROTECT,
-        verbose_name=_("Person"),
-        null=True,
+        Person, on_delete=models.PROTECT, verbose_name=_("Person"), null=True,
     )
 
     # Editor panels configuration
@@ -152,10 +130,7 @@ class PersonPage(Page):
 class PersonIndexPage(Page):
     """An index page of person children pages"""
 
-    intro = RichTextField(
-        blank=True,
-        verbose_name=_("Intro"),
-    )
+    intro = RichTextField(blank=True, verbose_name=_("Intro"),)
 
     content_panels = Page.content_panels + [
         FieldPanel("intro", classname="full"),

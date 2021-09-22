@@ -10,10 +10,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RenameModel(
-            old_name="PersonPageTitle",
-            new_name="PersonTitlePage",
-        ),
+        migrations.RenameModel(old_name="PersonPageTitle", new_name="PersonTitlePage",),
         migrations.AlterModelOptions(
             name="persontitlepage",
             options={

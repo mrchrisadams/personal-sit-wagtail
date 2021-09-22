@@ -12,18 +12,10 @@ class HeaderBlock(blocks.StructBlock):
     """A HTML header"""
 
     header_level = blocks.ChoiceBlock(
-        choices=(
-            ("h2", "H2"),
-            ("h3", "H3"),
-            ("h4", "H4"),
-            ("h5", "H5"),
-            ("h6", "H6"),
-        ),
+        choices=(("h2", "H2"), ("h3", "H3"), ("h4", "H4"), ("h5", "H5"), ("h6", "H6"),),
         label=_("Header level"),
     )
-    text = blocks.CharBlock(
-        label=_("Text"),
-    )
+    text = blocks.CharBlock(label=_("Text"),)
 
     class Meta:
         template = "wagtailpress/blocks/header.html"
@@ -33,13 +25,8 @@ class HeaderBlock(blocks.StructBlock):
 class ImageTextOverlayBlock(blocks.StructBlock):
     """An image with text overlay"""
 
-    image = ImageChooserBlock(
-        label=_("Image"),
-    )
-    text = blocks.CharBlock(
-        label=_("Text"),
-        max_length=200,
-    )
+    image = ImageChooserBlock(label=_("Image"),)
+    text = blocks.CharBlock(label=_("Text"), max_length=200,)
     text_color = blocks.ChoiceBlock(
         choices=(
             ("black", _("Black")),
@@ -54,30 +41,20 @@ class ImageTextOverlayBlock(blocks.StructBlock):
         choices=(
             ("top: 50%; left: 50%; transform: translate(-50%, -50%);", _("Centered")),
             (
-                "top: {}; left: {};".format(
-                    TEXT_OVERLAY_DELTA,
-                    TEXT_OVERLAY_DELTA,
-                ),
+                "top: {}; left: {};".format(TEXT_OVERLAY_DELTA, TEXT_OVERLAY_DELTA,),
                 _("Top Left"),
             ),
             (
-                "top: {}; right: {};".format(
-                    TEXT_OVERLAY_DELTA,
-                    TEXT_OVERLAY_DELTA,
-                ),
+                "top: {}; right: {};".format(TEXT_OVERLAY_DELTA, TEXT_OVERLAY_DELTA,),
                 _("Top Right"),
             ),
             (
-                "bottom: {}; left: {};".format(
-                    TEXT_OVERLAY_DELTA,
-                    TEXT_OVERLAY_DELTA,
-                ),
+                "bottom: {}; left: {};".format(TEXT_OVERLAY_DELTA, TEXT_OVERLAY_DELTA,),
                 _("Bottom Left"),
             ),
             (
                 "bottom: {}; right: {};".format(
-                    TEXT_OVERLAY_DELTA,
-                    TEXT_OVERLAY_DELTA,
+                    TEXT_OVERLAY_DELTA, TEXT_OVERLAY_DELTA,
                 ),
                 _("Bottom Right"),
             ),
@@ -93,23 +70,11 @@ class ImageTextOverlayBlock(blocks.StructBlock):
 class LinkBlock(blocks.StructBlock):
     """An URL with its description"""
 
-    description = blocks.CharBlock(
-        label=_("Description"),
-    )
+    description = blocks.CharBlock(label=_("Description"),)
     url = blocks.URLBlock(
         label=_("URL"),
         validators=[
-            URLValidator(
-                [
-                    "http",
-                    "https",
-                    "ftp",
-                    "ftps",
-                    "mailto",
-                    "xmpp",
-                    "tel",
-                ]
-            )
+            URLValidator(["http", "https", "ftp", "ftps", "mailto", "xmpp", "tel",])
         ],
     )
 

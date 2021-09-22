@@ -12,10 +12,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name="blogarticleauthor",
-            name="person",
-        ),
+        migrations.RemoveField(model_name="blogarticleauthor", name="person",),
         migrations.AddField(
             model_name="blogarticleauthor",
             name="author",

@@ -27,9 +27,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
         ),
         migrations.AlterField(
             model_name="blogarticlepage",
@@ -42,9 +40,7 @@ class Migration(migrations.Migration):
                 verbose_name="Tags",
             ),
         ),
-        migrations.DeleteModel(
-            name="BlogArtibclePageTag",
-        ),
+        migrations.DeleteModel(name="BlogArtibclePageTag",),
         migrations.AddField(
             model_name="blogarticlepagetag",
             name="content_object",

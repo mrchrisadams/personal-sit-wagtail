@@ -8,10 +8,7 @@ from django.core.paginator import (
 
 def items_at_page(items, items_per_pages, page_number):
     """Get items at given page"""
-    paginator = Paginator(
-        items,
-        items_per_pages,
-    )
+    paginator = Paginator(items, items_per_pages,)
     items = []
     try:
         items = paginator.page(page_number)

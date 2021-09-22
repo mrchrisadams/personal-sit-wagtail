@@ -32,9 +32,7 @@ class Migration(migrations.Migration):
                     wagtail.core.fields.RichTextField(blank=True, verbose_name="Intro"),
                 ),
             ],
-            options={
-                "abstract": False,
-            },
+            options={"abstract": False,},
             bases=("wagtailcore.page",),
         ),
         migrations.AddField(

@@ -24,9 +24,7 @@ class HeaderBlock(blocks.StructBlock):
         ),
         label=_("Header level"),
     )
-    text = blocks.CharBlock(
-        label=_("Text"),
-    )
+    text = blocks.CharBlock(label=_("Text"),)
 
     class Meta:
         template = "wagtailperson/blocks/header.html"
@@ -37,23 +35,11 @@ class HeaderBlock(blocks.StructBlock):
 class LinkBlock(blocks.StructBlock):
     """An URL with its description"""
 
-    description = blocks.CharBlock(
-        label=_("Description"),
-    )
+    description = blocks.CharBlock(label=_("Description"),)
     url = blocks.URLBlock(
         label=_("URL"),
         validators=[
-            URLValidator(
-                [
-                    "http",
-                    "https",
-                    "ftp",
-                    "ftps",
-                    "mailto",
-                    "xmpp",
-                    "tel",
-                ]
-            )
+            URLValidator(["http", "https", "ftp", "ftps", "mailto", "xmpp", "tel",])
         ],
     )
 
@@ -67,8 +53,7 @@ class PersonBlock(blocks.StructBlock):
     """A person block, linked to a person page"""
 
     person_page = blocks.PageChooserBlock(
-        label=_("Person or author page"),
-        target_model="wagtailperson.PersonPage",
+        label=_("Person or author page"), target_model="wagtailperson.PersonPage",
     )
 
     class Meta:
