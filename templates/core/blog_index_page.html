@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n static wagtailcore_tags wagtailimages_tags %}
+{% load wagtailroutablepage_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}{% endblock extra_css %}
+
+{% block content %}
+<section class="h-screen pt-">
+  <h1 class="text-5xl">
+    {{ page.title}}
+  </h1>
+
+  <h2 class="text-l pt-3">
+    An online notebook by me, Chris Adams, of things that catch my eye, and want to share.
+  </h2>
+
+  {# Loop though blog entries here #}
+  <h3 class="text-2xl pt-3">Recent entries</h3>
+
+   {% for article in articles %}
+
+     <div class="pt-3 pb-3">
+
+        <h3 class="text-xl underline">
+          <a href="{% pageurl article %}">
+           {{ article.date }} - {{ article.title }}
+          </a>
+        </h3>
+    </div>
+
+   {% endfor %}
+
+
+
+</section>
+
+
+
+
+{% endblock content %}
