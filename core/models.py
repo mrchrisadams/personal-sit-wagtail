@@ -56,7 +56,7 @@ class BlogIndexPage(RoutablePageMixin, Page):
             BlogArticlePage.objects.descendant_of(self)
             .live()
             .public()
-            .order_by("-date")
+            .order_by("-published_at")
         )
 
     def all_articles_tags(self):
@@ -104,8 +104,7 @@ class BlogArticlePage(Page):
     """A blog article"""
 
     subpage_types = []
-
-    date = models.DateField(
+    published_at = models.DateTimeField(
         verbose_name=_("Publication date"),
         help_text=_("Only for visitor display"),
         default=timezone.now,
@@ -127,13 +126,10 @@ class BlogArticlePage(Page):
 
     content = StreamField(
         [
-            # ("heading", HeaderBlock()),
             ("paragraph", RichTextBlock()),
             ("markdown", MarkdownBlock(icon="code")),
             ("quote", BlockQuoteBlock()),
             ("image", ImageChooserBlock()),
-            # ("imagetextoverlay", ImageTextOverlayBlock()),
-            # ("link", LinkBlock()),
             ("document", DocumentChooserBlock()),
             ("embed", EmbedBlock()),
         ],

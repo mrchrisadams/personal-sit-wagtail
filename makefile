@@ -2,4 +2,4 @@ run.site:
 	poetry run ./manage.py runserver
 
 build.site:
-	poetry run ./manage.py build
+	time poetry run ./manage.py build -v 3 --settings settings.production

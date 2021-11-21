@@ -157,6 +157,13 @@ BAKERY_VIEWS = ("wagtailbakery.views.AllPublishedPagesView",)
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
+# bakery
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_BUCKET_NAME = os.environ.get("AWS_BUCKET_NAME")
+AWS_REGION = os.environ.get("AWS_REGION")
+AWS_S3_ENDPOINT = os.environ.get("AWS_S3_ENDPOINT")
+
 
 # Wagtail settings
 
@@ -168,3 +175,4 @@ BASE_URL = "http://example.com"
 
 
 TAILWIND_APP_NAME = "apps.theme"
+BLOG_ARTICLES_PER_PAGES = 1000
