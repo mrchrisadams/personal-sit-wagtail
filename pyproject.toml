@@ -14,6 +14,10 @@ wagtail-markdown = "^0.7.0"
 Pygments = "^2.10.0"
 wagtailpress = "^0.12.0"
 pytest-django = "^4.4.0"
+psycopg2-binary = "^2.9.2"
+python-dotenv = { extras = ["cli"], version = "^0.19.2" }
+awscli = "^1.22.46"
+awscli-plugin-endpoint = "^0.4"
 
 
 [tool.poetry.dev-dependencies]
