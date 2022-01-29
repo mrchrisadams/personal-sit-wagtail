@@ -19,7 +19,9 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "bar_import_path", type=str, help="The path to the blog archive (.bar) file"
+            "bar_import_path",
+            type=str,
+            help="The path to the blog archive (.bar) file",
         )
 
     def handle(self, *args, **options):
@@ -39,4 +41,3 @@ class Command(BaseCommand):
         micro_importer.add_articles_to_blog_index(articles)
 
         self.stdout.write(f"OK. Imported '{len(articles)}' from {barfile_path}")
-

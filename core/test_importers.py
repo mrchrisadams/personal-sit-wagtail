@@ -42,7 +42,7 @@ class TestImportMicroBlog:
         micro_importer = MicroBlogImporter()
 
         article = micro_importer._create_blog_article(post)
-        # pull out pour markdown content again
+        # pull out our markdown content again
         mkdn = [block for block in article.content][0]
 
         published_at = datetime.fromisoformat(post.get("date_published"))

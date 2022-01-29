@@ -88,3 +88,35 @@ class MicroBlogImporter:
             idx.add_child(instance=article)
             idx.save()
             article.save()
+
+
+# class WordpressBlogImporter:
+# TODO: either implement this, or look at the new wagtail wordpress importer
+
+#     def process_post(self, post):
+#             logger.debug(post["content"]["rendered"])
+#             logger.info(".")
+#             try:
+#                 page = BlogPage.objects.descendant_of(self.blog_index).get(
+#                     slug=post["slug"]
+#                 )
+#             except BlogPage.DoesNotExist:
+#                 page = BlogPage(slug=post["slug"])
+#             page.title = self.convert_html_entities(post["title"]["rendered"])
+#             page.body = post["content"]["rendered"]
+#             if self.convert_images:
+#                 page.body = self.create_images_from_urls_in_content(page.body)
+#             page.search_description = self.convert_html_entities(
+#                 post["excerpt"]["rendered"]
+#             )
+#             page.date = post["date"][:10]
+#             self.set_blog_authors(page, post)
+#             if self.convert_images:
+#                 self.set_featured_media(page, post)
+#             if page.id:
+#                 page.save()
+#             else:
+#                 self.blog_index.add_child(instance=page)
+#             self.set_categories(page, post)
+#             self.set_tags(page, post)
+#             page.save()  # Save is required after adding ParentalManyToManyField

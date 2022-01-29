@@ -7,22 +7,25 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0002_alter_blogarticlepage_date'),
+        ("core", "0002_alter_blogarticlepage_date"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='blogarticlepage',
-            name='date',
-        ),
+        migrations.RemoveField(model_name="blogarticlepage", name="date",),
         migrations.AddField(
-            model_name='blogarticlepage',
-            name='published_at',
-            field=models.DateTimeField(default=django.utils.timezone.now, help_text='Only for visitor display', verbose_name='Publication date'),
+            model_name="blogarticlepage",
+            name="published_at",
+            field=models.DateTimeField(
+                default=django.utils.timezone.now,
+                help_text="Only for visitor display",
+                verbose_name="Publication date",
+            ),
         ),
         migrations.AlterField(
-            model_name='blogarticlepagetag',
-            name='id',
-            field=models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="blogarticlepagetag",
+            name="id",
+            field=models.BigAutoField(
+                auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
     ]
